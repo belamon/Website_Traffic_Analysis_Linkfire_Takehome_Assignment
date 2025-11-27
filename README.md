@@ -94,3 +94,47 @@ Result:
 
 This gives us the true daily pageview count, excluding any accidentally duplicated logs.
 
+## Question 2 
+
+## What about the other recorded events?
+
+In Question 1, we focused only on pageview events.
+For this question, we want to understand the other recorded events, which are click and preview.
+
+We’ll walk through it step by step.
+🔹 Step 1 — Check unique values in the event column
+
+First, we confirm which event types exist in the dataset:
+
+![alt text](<Screenshot 2025-11-28 at 00.27.31.png>)
+
+This tells us which types of user interactions are being tracked (e.g. pageview, click, preview).
+
+![alt text](<Screenshot 2025-11-28 at 00.28.18.png>)
+
+🔹 Step 2 — Create a subset that excludes pageview
+
+Since we already analyzed pageview, we now focus only on click and preview events:
+
+![alt text](<Screenshot 2025-11-28 at 00.29.08.png>)
+
+This CTE (without_pageview) will be reused in the next steps.
+
+🔹 Step 3 — Count total click and preview events
+
+Now we want to know how many click and preview events there are in total across the dataset:
+
+![alt text](<Screenshot 2025-11-28 at 00.36.51.png>)
+
+🔹 Step 4 — Count deduplicated click and preview events per day
+
+If we suspect duplicates in the raw data (for example, the same event logged multiple times), we can remove duplicate rows before counting.
+
+First we deduplicate, then filter by click and preview, and finally group by date:
+
+![alt text](<Screenshot 2025-11-28 at 00.37.47.png>)
+
+This query returns the number of non-duplicate click + preview events per day.
+
+![alt text](<Screenshot 2025-11-28 at 00.38.26.png>)
+
