@@ -11,4 +11,4 @@ The objective of this project is to analyze user traffic, understand the distrib
 
 The dataset (traffic.csv) contains web traffic event logs collected over a 7-day period. Each record represents an event on a specific link, along with categorical attributes such as country, city, artist, album, track, and ISRC.
 
-![Dataset Preview](Screenshot 2025-11-27 at 23.04.21.png)
+![Dataset Preview](https://github.com/belamon/Website_Traffic_Analysis_Linkfire_Takehome_Assignment/blob/c619b158f47acde9ec862ab43992d2bbe0472558/Screenshot%202025-11-27%20at%2023.04.21.png)
