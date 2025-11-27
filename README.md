@@ -57,6 +57,7 @@ Result:
 This gives us the total number of pageview events recorded.
 
 📅 Step 3 — Count total pageviews for each day
+
 Now that we know the overall total, the next step is to understand how pageviews are distributed across the 7-day period.
 This helps identify traffic patterns, spikes, or drops in user activity.
 
@@ -137,4 +138,76 @@ First we deduplicate, then filter by click and preview, and finally group by dat
 This query returns the number of non-duplicate click + preview events per day.
 
 ![alt text](<Screenshot 2025-11-28 at 00.38.26.png>)
+
+## Question 3 
+
+## Which countries did the click events come from?
+
+To understand where users clicked from, we need to isolate only the click events and then identify the countries associated with those events.
+
+🔹 Step 1 — Create a dataset containing only click events
+
+We filter the raw table to include only:
+	•	event = 'click'
+	•	country IS NOT NULL (to avoid missing geographic data)
+
+![alt text](<Screenshot 2025-11-28 at 00.43.20.png>)
+
+This temporary dataset will be used for further analysis.
+
+🔹 Step 2 — Get the list of unique countries contributing click events
+
+To see all countries that generated clicks, we extract the distinct values:
+![alt text](<Screenshot 2025-11-28 at 00.44.38.png>)
+
+This gives us a clean list of all countries where click interactions occurred.
+
+![alt text](<Screenshot 2025-11-28 at 00.57.58.png>)
+
+## Question 4
+## What was the overall click rate (clicks/pageviews)?
+
+The click rate (also known as CTR — Click Through Rate) tells us how effectively a link converts pageviews into clicks.
+In this analysis, we calculate CTR per link using:
+
+CTR = clicks / pageviews 
+
+We will do this step-by-step.
+
+🔹 Step 1 — Count total clicks per link
+
+![alt text](<Screenshot 2025-11-28 at 01.02.21.png>)
+
+This gives us how many times each link was clicked.
+
+🔹 Step 2 — Count total pageviews per link
+
+![alt text](<Screenshot 2025-11-28 at 01.03.08.png>)
+
+This gives us the total number of times each link was viewed.
+
+🔹 Step 3 — Join the two results on linkid
+
+We combine clicks and pageviews using an INNER JOIN:
+
+![alt text](<Screenshot 2025-11-28 at 01.03.55.png>)
+
+🔹 Step 4 — Calculate CTR
+
+CTR is computed as:
+
+
+![alt text](<Screenshot 2025-11-28 at 01.04.46.png>)
+
+Multiplying by 1.0 forces floating-point division so SQL doesn’t round to an integer.
+
+🔹 Step 5 — Final combined query
+
+![alt text](<Screenshot 2025-11-28 at 01.05.28.png>)
+
+This query returns:
+
+![alt text](<Screenshot 2025-11-28 at 01.06.13.png>)
+
+Giving you the CTR for each link 
 
