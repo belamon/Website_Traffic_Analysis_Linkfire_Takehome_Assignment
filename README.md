@@ -1,4 +1,4 @@
-Website Traffic Analytics
+# Website Traffic Analytics
 
 This data project was originally used as a take-home assignment during the recruitment process for Data Science positions at Linkfire. The dataset is publicly available on StrataScratch:
 https://platform.stratascratch.com/data-projects/website-traffic-analysis
@@ -19,9 +19,9 @@ result
 
 ![alt text](<Screenshot 2025-11-27 at 23.00.34.png>)
 
-** Question 1: 
+## Question 1: 
 
-How many total pageviews events did the links in the dataset receive over the full period, and how many per day?**
+## How many total pageviews events did the links in the dataset receive over the full period, and how many per day?
 
 To answer this, we will break the process into clear, logical steps so readers can easily follow how the result was produced 
 
